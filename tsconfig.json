@@ -17,6 +17,8 @@
     "paths": {
       "@components": ["src/components"],
       "@pages": ["src/pages"],
+      "@config": ["config"],
+      "@interfaces": ["src/interfaces"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

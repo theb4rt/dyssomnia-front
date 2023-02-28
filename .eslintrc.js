@@ -17,5 +17,9 @@ module.exports = {
   },
   rules: {
     'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/no-throw-literal': 'off',
+    // "no-param-reassign": 'off',
+    'no-console': 'off',
+
   },
 };
