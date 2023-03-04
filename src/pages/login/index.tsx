@@ -1,6 +1,7 @@
 import { Container } from '@mantine/core';
 import { useState } from 'react';
 import { showNotification } from '@mantine/notifications';
+import { useRouter } from 'next/router';
 import ApiAuthService from '../../../services/apiAuthService';
 import LoginComponent from '../../components/LoginComponent/loginComponent';
 import { IFormValues } from '../../interfaces/IFormLogin';
@@ -8,6 +9,7 @@ import { IFormValues } from '../../interfaces/IFormLogin';
 const AuthenticationForm = () => {
     const auth = new ApiAuthService();
     const [submitting, setSubmitting] = useState(false);
+    const router = useRouter();
 
     const handleFormValues = ({
                                   values,
@@ -22,6 +24,13 @@ const AuthenticationForm = () => {
                 })
                 .then((response) => {
                     console.log(response);
+                    showNotification({
+                        title: 'Success',
+                        message: 'You have successfully logged in',
+                        autoClose: true,
+                        color: 'green',
+                    });
+                    router.push('/dashboard');
                 })
                 .catch(({
                             data,
