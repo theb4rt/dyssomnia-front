@@ -1,6 +1,6 @@
 import { serialize } from 'cookie';
-import config from '@config';
 import { NextApiRequest, NextApiResponse } from 'next';
+import config from '../../../../config';
 import Auth from '../../../../services/authService';
 
 export default async function handler(req:NextApiRequest, res:NextApiResponse) {

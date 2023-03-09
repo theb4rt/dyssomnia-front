@@ -37,7 +37,7 @@ class Service {
         headers,
         ...params
     }: any) {
-        console.log('endpointt: ', this.baseUrl + this.prefix + endpoint);
+        // console.log('endpointt: ', this.baseUrl + this.prefix + endpoint);
 
         const head = {
             Authorization: `Bearer ${this.token}`,

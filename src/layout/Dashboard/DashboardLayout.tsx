@@ -4,8 +4,9 @@ import { useState } from 'react';
 import Sidebar from './Sidebar/Sidebar';
 import SidebarCollapsed from './Sidebar/SidebarCollapsed';
 import Headerbar from './HeaderBar';
+import { IUserProfile } from '../../interfaces/IUser';
 
-const DashboardLayout = () => {
+const DashboardLayout = (props: IUserProfile) => {
     const [collapsed, setCollapsed] = useState(true);
     const handleCollapse = () => {
         setCollapsed(!collapsed);
@@ -16,7 +17,10 @@ const DashboardLayout = () => {
           padding="md"
           layout="alt"
           navbar={
-                collapsed ? (<Sidebar handleCollapse={handleCollapse} />) : (
+                collapsed ? (<Sidebar
+                  handleCollapse={handleCollapse}
+                  user_email={props.email}
+                />) : (
                     <SidebarCollapsed handleCollapse={handleCollapse} />)
 
             }

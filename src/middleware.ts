@@ -15,7 +15,7 @@ export async function middleware(request: NextRequest) {
         return NextResponse.redirect(new URL('/login', url));
     }
 
-    const payload = await validate(token);
+    const payload = await validate(token.value);
 
     if (payload === null || payload === undefined) {
         return NextResponse.redirect(new URL('/login', url));

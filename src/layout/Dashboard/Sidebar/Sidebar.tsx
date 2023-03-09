@@ -1,9 +1,7 @@
 import { Button, Code, createStyles, Divider, Group, Navbar, ScrollArea } from '@mantine/core';
 import { IconLayoutSidebarLeftCollapse } from '@tabler/icons';
 import Image from 'next/image';
-import { getCookie } from 'cookies-next';
 import { LinksGroup } from '../SidebarLinksGroup';
-
 import b4rtLogo from '../../../../public/assets/images/b4rt-logo.png';
 import { UserButton } from '../UserButton';
 import { menuElements } from './MenuElements';
@@ -44,17 +42,20 @@ const useStyles = createStyles((theme) => ({
     },
 }));
 
-type SidebarProps = {
+interface ISidebarProps {
 
-    handleCollapse: () => void;
-};
-const Sidebar = (props: SidebarProps) => {
+    handleCollapse: () => void
+    user_name?: string;
+    user_email?: string
+}
+
+const Sidebar = (props: ISidebarProps) => {
     const { classes } = useStyles();
     const links = menuElements.map((item) => <LinksGroup {...item} key={item.label} />);
-    const logoUser: string | boolean = getCookie('user-profile-image') || false;
-    const nameUser: string | boolean = getCookie('user-name') || 'User Name';
-    const email: string | boolean = getCookie('user-name') || 'admin@example.com';
-
+    // const logoUser: string | boolean = getCookie('user-profile-image') || false;
+    const logoUser = false;
+    const nameUser = props.user_name || 'User';
+    const email = props.user_email || 'admin@example.com';
     return (
 
         <Navbar width={{ sm: 250 }} p="md" className={classes.navbar}>
