@@ -1,10 +1,12 @@
-import { Button, Code, createStyles, Divider, Group, Navbar, ScrollArea } from '@mantine/core';
+import { Button, Code, createStyles, Divider, Group, Navbar, ScrollArea, Tooltip } from '@mantine/core';
 import { IconLayoutSidebarLeftCollapse } from '@tabler/icons';
 import Image from 'next/image';
+import React from 'react';
 import { LinksGroup } from '../SidebarLinksGroup';
 import b4rtLogo from '../../../../public/assets/images/b4rt-logo.png';
 import { UserButton } from '../UserButton';
 import { menuElements } from './MenuElements';
+import LogoutComponent from '../../../components/LoginComponent/logoutComponent';
 
 const useStyles = createStyles((theme) => ({
     navbar: {
@@ -78,7 +80,11 @@ const Sidebar = (props: ISidebarProps) => {
                 />
                 <Divider mt="md" mb="md" />
                 <Group position="center">
-                    <div>
+                    <Tooltip
+                      label="Collapse"
+                      withinPortal
+                      position="right-end"
+                    >
                         <Button
                           type="button"
                           variant="light"
@@ -86,10 +92,10 @@ const Sidebar = (props: ISidebarProps) => {
                         >
                             <IconLayoutSidebarLeftCollapse
                               size={20}
-
                             />
                         </Button>
-                    </div>
+                    </Tooltip>
+                    <LogoutComponent />
 
                 </Group>
             </Navbar.Section>

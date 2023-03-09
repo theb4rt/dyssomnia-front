@@ -15,5 +15,6 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
     return res
         .setHeader('Set-Cookie', serialized)
-        .status(204).json({});
+        .status(200)
+        .json({});
 }

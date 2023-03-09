@@ -1,10 +1,11 @@
 import React from 'react';
 import { Center, Navbar, Stack } from '@mantine/core';
-import { IconLayoutSidebarRightCollapse, IconLogout, IconSwitchHorizontal, TablerIcon } from '@tabler/icons';
+import { IconLayoutSidebarRightCollapse, IconSwitchHorizontal, TablerIcon } from '@tabler/icons';
 import Image from 'next/image';
 import { menuElements } from './MenuElements';
 import { NavbarLinkCustom, NavbarLinkDefault } from '../../../components/NavbarComponents/menuElements';
 import b4rtLogo from '../../../../public/assets/images/b4rt-logo.png';
+import LogoutComponent from '../../../components/LoginComponent/logoutComponent';
 
 type HeaderbarProps = {
     handleCollapse: () => void;
@@ -75,7 +76,7 @@ const NavBarCollapsed = (props: HeaderbarProps) => {
                       label="Change account"
 
                     />
-                    <NavbarLinkDefault icon={IconLogout} label="Logout" />
+                    <LogoutComponent />
 
                 </Stack>
             </Navbar.Section>
