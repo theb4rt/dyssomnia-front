@@ -1,12 +1,11 @@
 import { AppShell } from '@mantine/core';
 
-import { useState } from 'react';
+import { PropsWithChildren, useState } from 'react';
 import Sidebar from './Sidebar/Sidebar';
 import SidebarCollapsed from './Sidebar/SidebarCollapsed';
 import Headerbar from './HeaderBar';
-import { IUserProfile } from '../../interfaces/IUser';
 
-const DashboardLayout = (props: IUserProfile) => {
+const DashboardLayout = ({ children }: PropsWithChildren) => {
     const [collapsed, setCollapsed] = useState(true);
     const handleCollapse = () => {
         setCollapsed(!collapsed);
@@ -19,7 +18,7 @@ const DashboardLayout = (props: IUserProfile) => {
           navbar={
                 collapsed ? (<Sidebar
                   handleCollapse={handleCollapse}
-                  user_email={props.email}
+                  user_email="root@localhost"
                 />) : (
                     <SidebarCollapsed handleCollapse={handleCollapse} />)
 
@@ -30,7 +29,7 @@ const DashboardLayout = (props: IUserProfile) => {
             })}
 
         >
-            {/* Your application here */}
+            {children}
         </AppShell>
     );
 };

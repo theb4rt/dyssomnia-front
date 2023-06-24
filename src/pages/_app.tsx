@@ -4,6 +4,7 @@ import { getCookie, setCookie } from 'cookies-next';
 import Head from 'next/head';
 import { ColorScheme, ColorSchemeProvider, MantineProvider } from '@mantine/core';
 import { NotificationsProvider } from '@mantine/notifications';
+import DashboardLayout from '../layout/Dashboard/DashboardLayout';
 
 export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     const {
@@ -39,7 +40,9 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
                   withNormalizeCSS
                 >
                     <NotificationsProvider>
-                        <Component {...pageProps} />
+                        <DashboardLayout>
+                            <Component {...pageProps} />
+                        </DashboardLayout>
                     </NotificationsProvider>
                 </MantineProvider>
             </ColorSchemeProvider>
