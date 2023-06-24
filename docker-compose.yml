@@ -1,8 +1,16 @@
 version: '3.9'
 services:
-  web:
+  dyssomnia-front:
     build: .
     ports:
       - "3000:3000"
     environment:
       NODE_ENV: production
+    networks:
+      - dyssomnia-network
+    deploy:
+      replicas: 1
+
+networks:
+  dyssomnia-network:
+    name: dyssomnia-network
