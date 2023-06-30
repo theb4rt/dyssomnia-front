@@ -10,6 +10,7 @@ const AuthenticationForm = () => {
     const auth = new ApiAuthService();
     const [submitting, setSubmitting] = useState(false);
     const router = useRouter();
+    console.log('b4rt: ', router.pathname);
 
     const handleFormValues = ({
                                   values,
