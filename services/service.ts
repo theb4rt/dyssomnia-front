@@ -1,30 +1,11 @@
 import config from '../config';
 
-// const response_maker = (data: IDefaultResponse) => {
-//     if (data.status === 200) {
-//         return {
-//             data: data.payload,
-//             status: data.status,
-//         };
-//     }
-//     if (data.status === 401 && data.estado === false) {
-//         throw {
-//             status: data.status,
-//             message: data.mensaje,
-//         };
-//     } else {
-//         throw {
-//             status: data.status,
-//             message: data.mensaje,
-//         };
-//     }
-// };
 class Service {
     baseUrl: string;
     token: string | undefined | null;
 
-    constructor(token: string | undefined | null = null) {
-        this.baseUrl = config.api_url;
+    constructor(token: string | undefined | null = null, url?: string) {
+        this.baseUrl = url || config.api_back_url;
         this.token = token;
     }
 
@@ -74,4 +55,5 @@ class Service {
     }
 }
 
+//HERE IS THE DEFAULT AND MY CUSTOM NEST SERVICE< BUT ONLY WITH THE MANDATORY URL
 export default Service;

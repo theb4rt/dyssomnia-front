@@ -21,8 +21,13 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
     const toggleColorScheme = (value?: ColorScheme) => {
         const nextColorScheme = value || (colorScheme === 'dark' ? 'light' : 'dark');
         setColorScheme(nextColorScheme);
-        setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 }
-        );
+        setCookie('mantine-color-scheme', nextColorScheme, { maxAge: 60 * 60 * 24 * 30 });
+    };
+
+    const theme = {
+        ...fontFamilies,
+        colorScheme,
+        primaryColor: 'teal',
     };
 
     return (
@@ -34,11 +39,7 @@ export default function App(props: AppProps & { colorScheme: ColorScheme }) {
             </Head>
 
             <ColorSchemeProvider colorScheme={colorScheme} toggleColorScheme={toggleColorScheme}>
-                <MantineProvider
-                  theme={{ colorScheme, ...fontFamilies }}
-                  withGlobalStyles
-                  withNormalizeCSS
-                >
+                <MantineProvider theme={theme} withGlobalStyles withNormalizeCSS>
                     <NotificationsProvider>
                         <Layout>
                             <Component {...pageProps} />
@@ -55,6 +56,5 @@ App.getInitialProps = async (appContext: AppContext) => {
     return {
         ...appProps,
         colorScheme: getCookie('mantine-color-scheme', appContext.ctx) || 'dark',
-
     };
 };

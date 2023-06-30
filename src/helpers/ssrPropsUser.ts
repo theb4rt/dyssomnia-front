@@ -2,12 +2,11 @@ import type { GetServerSidePropsContext } from 'next';
 import config from '../../config';
 import { validate } from './validateJwt';
 
-export default async function ssrPropsUser({ req }: GetServerSidePropsContext) {
+export async function ssrPropsUser({ req }: GetServerSidePropsContext) {
     const { cookies } = req;
     const token = cookies[config.auth_token_name];
 
     const payload = await validate(token);
-    console.log('payload', payload);
 
     // const name = null;
     let email = null;
@@ -25,6 +24,15 @@ export default async function ssrPropsUser({ req }: GetServerSidePropsContext) {
     return {
         id,
         email,
+        token,
+    };
+}
+
+export async function ssrToken({ req }: GetServerSidePropsContext) {
+    const { cookies } = req;
+    const token = cookies[config.auth_token_name];
+
+    return {
         token,
     };
 }

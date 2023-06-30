@@ -20,7 +20,9 @@ module.exports = {
         '@typescript-eslint/no-throw-literal': 'off',
         // "no-param-reassign": 'off',
         'no-console': 'off',
-        "@next/next/no-server-import-in-page": "off"
+        "@next/next/no-server-import-in-page": "off",
+        'max-len': ['error', {code: 120}],
+
 
     },
 };
